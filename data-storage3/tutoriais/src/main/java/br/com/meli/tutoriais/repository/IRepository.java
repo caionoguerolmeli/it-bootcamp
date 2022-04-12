@@ -1,2 +1,13 @@
-package br.com.meli.tutoriais.repository;public interface IRepository {
+package br.com.meli.tutoriais.repository;
+
+import br.com.meli.tutoriais.model.Tutorial;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface IRepository extends JpaRepository<Tutorial, Long> {
+    List<Tutorial> findByPublished(Boolean published);
+    List<Tutorial> findByTitleContains(String string);
 }
